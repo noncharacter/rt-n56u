@@ -17,7 +17,7 @@ on:
 jobs:
   build:
     name: build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: ${{ !(github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) }}
     env:
       build_variant: ${{ matrix.build_variant }}
@@ -27,7 +27,7 @@ jobs:
       matrix:
         include:
           - build_variant: "mt7621"
-            targets: "K2P_nano K2P DIR-878 RM2100 CR660x"
+            targets: "K2P_nano K2P"
     steps:
       - uses: actions/checkout@v2
       - name: Prepare environment
